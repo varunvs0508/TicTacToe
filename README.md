@@ -116,20 +116,20 @@ Clones the TicTacToe project repository from GitHub into the `/home/ec2-user/` d
 
 ```bash
 cd /home/ec2-user/
-git clone https://github.com/avizway1/tictactoe-with-DynamoDB.git
+git clone https://github.com/varunvs0508/TicTacToe.git
 ```
 
 Create a file inside the code location provide file name as "config.ini" and add below entry. make sure to change the region accordingly.
 
 [Settings]
 TableName = Games
-Region = ap-south-2
+Region = ap-south-1
 
 Also, edit the config file and edit the config file and set region and endpoint based on your resources. Example mentioned below
 
 [dynamodb]
-region=ap-south-2
-endpoint=dynamodb.ap-south-2.amazonaws.com
+region=ap-south-1
+endpoint=dynamodb.ap-south-1.amazonaws.com
 
 Also, Dont forget to attach an IAM role, that has valid access to create a DynamoDB table. Also, While launching EC2 instance, Enable "metadata" to "V1 and v2" instead of only V2, as we are using metadata URL to obtain the temp credentials.
 
@@ -137,7 +137,7 @@ Once all content is ready, Navigate to the project location and run below comman
 #make sure to open required port (5000) in ec2 security group
 
 ```bash
-python application.py --config config.ini --mode service --endpoint dynamodb.ap-south-2.amazonaws.com --serverPort 5000
+python application.py --config config.ini --mode service --endpoint dynamodb.ap-south-1.amazonaws.com --serverPort 5000
 ```
 
 Then Open browser and enter **http://instance-public-ip:5000/** and enter to access the application.
